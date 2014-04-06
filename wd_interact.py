@@ -108,7 +108,7 @@ def set_reference(claim_id, org_id, token):
          "baserevid": 119268185,
          "index": 0,
         # The reference snak for the National Archives RA..... 
-         "snaks": {
+         "snaks": '{
                 "P123": [{"snaktype": "value", "property":"P123", "datavalue": 
                                  {"type":"wikibase-entityid", "value":{"entity-type":"item","numeric-id":518155}}}
                         ],
@@ -124,7 +124,7 @@ def set_reference(claim_id, org_id, token):
                 "P364": [{"snaktype":"value", "property":"P364","datavalue":
                                  {"type":"wikibase-entityid","value":{"entity-type":"item","numeric-id":1860}}}
                        ]
-                }
+                }'
             }
     result = api.APIRequest(site, q).query()
     pp.pprint(result)
