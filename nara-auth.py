@@ -7,6 +7,7 @@ import os, sys, pickle
 import lxml.etree as etree
 
 root_to_scan = sys.argv[1]
+outputfile = sys.argv[2]
 print(root_to_scan)
 xmlfiles = []
 masterlist = []
@@ -24,8 +25,8 @@ def read_pickle(source):
     with open(source, 'r') as f:
         pickle.load(f)
         
-def pickle_data(data):
-    pickle.dump(data, open("smalllist.p", "wb"))
+def pickle_data(data, filename):
+    pickle.dump(data, open(filename, "wb"))
 
 def filterdata(source):
     pass
@@ -51,7 +52,7 @@ def harvest():
         mydict = xml_to_dict(xmlfile)
         masterlist.append(mydict)
         print(mydict)
-    pickle_data(masterlist)
+    pickle_data(masterlist, outputfile)
     print("FINISHED! Filecount = {0}".format(len(xmlfiles)))
 
 if __name__ == "__main__":
