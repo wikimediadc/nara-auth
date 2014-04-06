@@ -14,3 +14,16 @@ to an authority file, and the content of each list item being a Python dictionar
 value pairs), corresponding to the elements and values of the original XML files. The 
 output object is dumped as a pickle serialization.
 
+
+Usage
+-----
+To run the wikidata python script use the following commands
+
+```bash
+python wd_interact.py search # uses smalllist.p to reference wikidata
+ids to nara org ids
+python wd_interact.py mass_edit # updates the wikidata entries
+python wd_interact.py create_ref # creates a reference for a specific
+claim for a specific wikidata item
+```
+
