@@ -20,10 +20,11 @@ Usage
 To run the wikidata python script use the following commands
 
 ```bash
-python wd_interact.py search # uses smalllist.p to reference wikidata
-ids to nara org ids
+python wd_interact.py search # uses smalllist.p to reference wikidata ids to nara org ids
 python wd_interact.py mass_edit # updates the wikidata entries
-python wd_interact.py create_ref # creates a reference for a specific
-claim for a specific wikidata item
+python wd_interact.py create_ref # creates a reference for a specific claim for a specific wikidata item
 ```
 
+License
+----
+CC0

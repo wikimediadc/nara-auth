@@ -97,29 +97,31 @@ def mass_edit(number=False):
         #res = set_reference(ent_id, org_id, tok)
     print "Ran this many iterations:", len(range(0, number))
 
-def set_reference(entity_id, org_id, token):
-    """entity_id is an IRI for claims,
+def set_reference(claim_id, org_id, token):
+    """claim_id is an IRI for claims,
        org_id is the nara archive org id
        token is a login token
     Given a wikidata claim id create the appropriate reference."""
     q = {"action": "wbsetreference",
-         "statement": entity_id,
+         "statement": claim_id,
          "token": token,
+         "baserevid": 119268185,
+         "index": 0,
         # The reference snak for the National Archives RA..... 
          "snaks": {
                 "P123": [{"snaktype": "value", "property":"P123", "datavalue": 
                                  {"type":"wikibase-entityid", "value":{"entity-type":"item","numeric-id":518155}}}
                         ],
-                "P854": [{"snaktype":"value","property":"P854","datavalue":
+                "P854": [{"snaktype": "value", "property":"P854","datavalue":
                                  {"type":"string","value":"http://research.archives.gov/organization/%s" % org_id}}
                         ],
-                "P31": [{"snaktype":"value","property":"P31","datavalue":
+                "P31": [{"snaktype": "value", "property":"P31","datavalue":
                                  {"type":"wikibase-entityid","value":{"entity-type":"item","numeric-id":36524}}}
                        ],
-                "P813":[{"snak":"value","property":"P813","datavalue":
+                "P813": [{"snak": "value", "property":"P813","datavalue":
                                  {"type":"time","value": {"time": "+00000002014-04-06T00:00:00Z", "timezone": 0,"before": 0,"after": 0,"precision": 11,"calendarmodel": "http://www.wikidata.org/entity/Q1985727"}}}
                        ],
-                "P364":[{"snaktype":"value","property":"P364","datavalue":
+                "P364": [{"snaktype":"value", "property":"P364","datavalue":
                                  {"type":"wikibase-entityid","value":{"entity-type":"item","numeric-id":1860}}}
                        ]
                 }
@@ -134,6 +136,11 @@ def store_dicts(filename, objs):
     pickle.dump(objs, f)
 
 def deal_with_mults():
+    """
+    A command line program that presents information to deal with cases
+    where multiple wikidata items are returned after searching wikidata
+    using the display-name provided by the nara xml.
+    """
     mults = pickle.load(open('unknown-mults.p'))
     correct = []
     for _dct in mults:
@@ -176,9 +183,11 @@ if __name__ == '__main__':
         search()
     if cmd == "mass_edit":
         mass_edit(3)
+    if cmd == "one_edit":
+        single_edit()
     if cmd == "deal_with_mults":
         deal_with_mults()
     if cmd == "create_ref":
         set_reference("Q1518467$DF5C5D13-F12D-4003-BB87-666B61323A46",
-                "142809", get_token())
+                142809, get_token())
 
