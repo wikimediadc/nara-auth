@@ -108,23 +108,24 @@ def set_reference(claim_id, org_id, token):
          "baserevid": 119268185,
          "index": 0,
         # The reference snak for the National Archives RA..... 
-         "snaks": '{
+         "snaks": '''{
                 "P123": [{"snaktype": "value", "property":"P123", "datavalue": 
                                  {"type":"wikibase-entityid", "value":{"entity-type":"item","numeric-id":518155}}}
                         ],
                 "P854": [{"snaktype": "value", "property":"P854","datavalue":
-                                 {"type":"string","value":"http://research.archives.gov/organization/%s" % org_id}}
+                                 {"type":"string","value":"http://research.archives.gov/organization/%s}"}}
                         ],
                 "P31": [{"snaktype": "value", "property":"P31","datavalue":
                                  {"type":"wikibase-entityid","value":{"entity-type":"item","numeric-id":36524}}}
                        ],
-                "P813": [{"snak": "value", "property":"P813","datavalue":
+                "P813": [{"snaktype": "value", "property":"P813","datavalue":
                                  {"type":"time","value": {"time": "+00000002014-04-06T00:00:00Z", "timezone": 0,"before": 0,"after": 0,"precision": 11,"calendarmodel": "http://www.wikidata.org/entity/Q1985727"}}}
                        ],
                 "P364": [{"snaktype":"value", "property":"P364","datavalue":
                                  {"type":"wikibase-entityid","value":{"entity-type":"item","numeric-id":1860}}}
                        ]
-                }'
+                }''' % org_id
+                # ^^ python format string arguments ^^
             }
     result = api.APIRequest(site, q).query()
     pp.pprint(result)
@@ -187,7 +188,7 @@ if __name__ == '__main__':
         single_edit()
     if cmd == "deal_with_mults":
         deal_with_mults()
-    if cmd == "create_ref":
+    if cmd == "set_ref":
         set_reference("Q1518467$DF5C5D13-F12D-4003-BB87-666B61323A46",
                 142809, get_token())
 
