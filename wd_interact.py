@@ -113,7 +113,7 @@ def set_reference(claim_id, org_id, token):
                                  {"type":"wikibase-entityid", "value":{"entity-type":"item","numeric-id":518155}}}
                         ],
                 "P854": [{"snaktype": "value", "property":"P854","datavalue":
-                                 {"type":"string","value":"http://research.archives.gov/organization/%s}"}}
+                                 {"type":"string","value":"http://research.archives.gov/organization/%s"}}
                         ],
                 "P31": [{"snaktype": "value", "property":"P31","datavalue":
                                  {"type":"wikibase-entityid","value":{"entity-type":"item","numeric-id":36524}}}
