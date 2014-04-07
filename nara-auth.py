@@ -47,7 +47,7 @@ def harvest(root_to_scan, outputfile):
         mydict = xml_to_dict(xmlfile)
         result.append(mydict)
         print(mydict)
-    pickle_data(masterlist, outputfile)
+    pickle_data(result, outputfile)
     print("FINISHED! Filecount = {0}".format(len(xmlfiles)))
 
 if __name__ == "__main__":
